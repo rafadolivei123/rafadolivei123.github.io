@@ -97,6 +97,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .menu a{font-family:var(--serif);font-size:2.1rem;color:#eef2f5}
   .menu .pill{font-family:var(--sans);font-size:1rem;margin-top:12px}
   .menu-open .menu{clip-path:inset(0 0 0 0)}
+  /* com o menu aberto, nada no cabeçalho pode prender o painel à altura da barra */
+  .menu{height:100vh;height:100dvh;overflow-y:auto;padding:96px 24px 40px}
+  .menu-open{overflow:hidden}
+  .menu-open .site-head,.menu-open .site-head.solid{transform:none;backdrop-filter:none;-webkit-backdrop-filter:none;background:transparent;border-color:transparent}
+  .menu-open .site-head .wrap{transform:none!important}
 }
 
 /* ---------- herói ---------- */
@@ -620,7 +625,7 @@ footer p{max-width:78ch}
     .fromTo('.portrait .ph',{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.6,ease:'expo.inOut'},'<-.5')
     .from('.portrait .ph img',{scale:1.25,duration:2,ease:'expo.out'},'<.2')
     .from('.portrait figcaption',{y:16,opacity:0,duration:1,ease:'expo.out'},'<.6')
-    .from('.site-head .wrap',{y:-30,opacity:0,duration:1.2,ease:'expo.out'},'<')
+    .from('.site-head .wrap',{y:-30,opacity:0,duration:1.2,ease:'expo.out',clearProps:'transform'},'<')
     .add(()=>{intro.remove();lenis.start()});
   intro.style.clipPath='inset(0 0 0 0)';
 
